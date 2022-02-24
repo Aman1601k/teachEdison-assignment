@@ -9,11 +9,13 @@ export default function Favorite() {
 
   //useffect for retrieved the data from localstorage.
   useEffect(() => {
-    var retrievedData = localStorage.getItem("favorites");
-    const favoritesArr = JSON.parse(retrievedData);
-    //take array an call for every id present in array
-    for (let i = 0; i < favoritesArr.length; i++) {
-      fetchData(favoritesArr[i]);
+    if(JSON.parse(localStorage.getItem("favorites"))){
+      var retrievedData = localStorage.getItem("favorites");
+      const favoritesArr = JSON.parse(retrievedData);
+      //take array an call for every id present in array
+      for (let i = 0; i < favoritesArr.length; i++) {
+        fetchData(favoritesArr[i]);
+      }
     }
   }, []);
 
