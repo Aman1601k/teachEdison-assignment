@@ -34,6 +34,7 @@ export default function Home() {
           data.slice(indexOfFirstData, indexOfLastData).map((item) => {
             return (
               <ContentSection
+                key={item?.imdbID}
                 item={item}
                 fav={true}
               />

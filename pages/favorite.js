@@ -4,8 +4,8 @@ import Link from "next/link";
 import Navbar from "../components/Navbar";
 import ContentSection from "../components/ContentSection";
 
-export default function favorite() {
-  const [favData, setFavData] = useState([]);
+export default function Favorite() {
+  const [favData, setFavData] = React.useState([]);
 
   //useffect for retrieved the data from localstorage.
   useEffect(() => {
@@ -32,7 +32,7 @@ export default function favorite() {
       <div className={styles.listBody}>
         {favData?.length > 0 ? (
           favData?.map((item) => {
-            return <ContentSection item={item} fav={false}/>;
+            return <ContentSection item={item} key={item?.imdbID} fav={false}/>;
           })
         ) : (
           <>
