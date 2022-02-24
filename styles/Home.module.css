@@ -67,7 +67,7 @@
 .listBody{
   margin: auto;
   width: 65rem;
-  height: 90vh;
+  height: 89vh;
   display: flex;
   flex-direction: column;
   align-items:center;
@@ -100,7 +100,7 @@
 }
 
 .movieName{
-  font-size: 34px;
+  font-size: 32px;
 }
 
 .movieRating{
@@ -122,4 +122,22 @@
 
 .emptyResult{
   color: white;
+}
+
+.paginationDiv{
+  margin: auto;
+  width: 65rem;
+  height: 20px;   
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.paginateButton{
+  background-color: #000;
+  color: white;
+  border: 1px solid lightgrey;
+  margin: 0px 3px;
+  border-radius: 10px;
+  cursor: pointer;  
 }

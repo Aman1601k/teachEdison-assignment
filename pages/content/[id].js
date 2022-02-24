@@ -9,13 +9,15 @@ export default function Content() {
   const { id } = router.query;
   const [movieData, setMovieData] = useState();
 
+  //useEffect for fetchdata initially
   useEffect(() => {
     fetchData();
   }, []);
 
+  //function for fetchdata according to id
   const fetchData = async () => {
     const response = await fetch(
-      `http://www.omdbapi.com/?i=${id}&apikey=df2af48f`
+      `http://www.omdbapi.com/?i=${id}&apikey=${process.env.API_KEY}`
     );
     const data = await response.json();
     setMovieData(data);

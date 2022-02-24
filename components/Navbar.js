@@ -2,12 +2,18 @@ import Link from "next/link";
 import React from "react";
 import styles from "../styles/Home.module.css";
 
-const Navbar = ({ movie, setMovie, setString, setData, favorites, remove }) => {
+import Button from '@mui/material/Button';
+
+const Navbar = ({ movie, setMovie, setString, setData, remove }) => {
+
+  //Fetch Data according to search
   const fetchData = async () => {
     const response = await fetch(
-      `http://www.omdbapi.com/?s=${movie}&apikey=df2af48f`
+      `http://www.omdbapi.com/?s=${movie}&apikey=${process.env.API_KEY}`
     );
     const data = await response.json();
+
+    //check if response is true then proceed else show error
     if (data.Response == "True") {
       setData(data.Search);
     } else {
@@ -16,11 +22,8 @@ const Navbar = ({ movie, setMovie, setString, setData, favorites, remove }) => {
     }
   };
 
-  const sendData = () => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  };
-
   return (
+    //Navbar styling and functions call
     <div className={styles.navbar}>
       <h1 className={styles.logo}>IMDB</h1>
       {remove == "none" && (
@@ -37,11 +40,11 @@ const Navbar = ({ movie, setMovie, setString, setData, favorites, remove }) => {
         </div>
       )}
       {(remove == "none" || remove == "partial") && (
-        <button onClick={() => sendData()} className={styles.favorites}>
+        <Button className={styles.favorites}>
           <Link href="/favorite">
             <a className={styles.favText}>Favorites</a>
           </Link>
-        </button>
+        </Button>
       )}
     </div>
   );
